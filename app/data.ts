@@ -27,6 +27,10 @@ type SocialLink = {
   link: string
 }
 
+type ToolAndTechnology = {
+  name: string
+}
+
 export const PROJECTS: Project[] = [
   {
     name: 'OculaCare',
@@ -56,9 +60,7 @@ export const PROJECTS: Project[] = [
   },
 ]
 
-
 export const WORK_EXPERIENCE: WorkExperience[] = [
-  
   {
     company: 'ISSM Labelling Solutions (Pvt) Ltd',
     title: 'Junior Frontend Developer',
@@ -93,7 +95,6 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
   },
 ]
 
-
 export const BLOG_POSTS: BlogPost[] = [
   {
     title: 'Why I Started My Own App Agency',
@@ -125,7 +126,6 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 ]
 
-
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
@@ -141,8 +141,29 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     label: 'Instagram',
-    link: 'tagram.com/_awais._.jarral_/',
+    link: 'https://instagram.com/_awais._.jarral_/',
   },
 ]
 
 export const EMAIL = 'awaisjarral37@gmail.com'
+
+export const TOOLS_AND_TECHNOLOGIES: ToolAndTechnology[] = [
+  { name: 'JavaScript' },
+  { name: 'TypeScript' },
+  { name: 'React' },
+  { name: 'Next.js' },
+  { name: 'Flutter' },
+  { name: 'React Native' },
+  { name: 'Python' },
+  { name: 'Java' },
+  { name: 'MongoDB' },
+  { name: 'MySQL' },
+  { name: 'Firebase' },
+  { name: 'Tailwind CSS' },
+  { name: 'Bootstrap' },
+  { name: 'REST APIs' },
+  { name: 'Git' },
+  { name: 'Figma' },
+  { name: 'VS Code' },
+  { name: 'Android Studio' },
+]

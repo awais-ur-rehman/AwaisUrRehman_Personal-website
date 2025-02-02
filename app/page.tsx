@@ -15,6 +15,7 @@ import { AnimatedBackground } from '@/components/ui/animated-background'
 import {
   PROJECTS,
   WORK_EXPERIENCE,
+  TOOLS_AND_TECHNOLOGIES,
   BLOG_POSTS,
   EMAIL,
   SOCIAL_LINKS,
@@ -169,6 +170,23 @@ export default function Personal() {
                 </p>
               </div>
             </div>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">Tools & Technologies</h3>
+        <div className="flex flex-wrap gap-3">
+          {TOOLS_AND_TECHNOLOGIES.map((tool) => (
+            <span
+              key={tool.name}
+              className="rounded-full bg-zinc-200 px-4 py-2 text-sm font-medium text-zinc-900 dark:bg-zinc-700 dark:text-zinc-100"
+            >
+              {tool.name}
+            </span>
           ))}
         </div>
       </motion.section>
