@@ -29,91 +29,120 @@ type SocialLink = {
 
 export const PROJECTS: Project[] = [
   {
-    name: 'Motion Primitives Pro',
+    name: 'OculaCare',
     description:
-      'Advanced components and templates to craft beautiful websites.',
-    link: 'https://pro.motion-primitives.com/',
+      'OculaCare is a 360° holistic eye healthcare solution, integrating advanced diagnostics and personalized care for optimal vision health.',
+    link: 'https://www.linkedin.com/posts/awais-ur-rehman-88615a217_92disrupt-92disrupt-aichallenge2024-activity-7274777064333803520-gH2w?utm_source=share&utm_medium=member_desktop',
     video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
+      'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1738497188/oculacare_mobile_dabdqf.mp4',
     id: 'project1',
   },
   {
-    name: 'Motion Primitives',
-    description: 'UI kit to make beautiful, animated interfaces.',
-    link: 'https://motion-primitives.com/',
+    name: 'OxyBlue',
+    description: 'OxyBlue is a seamless water delivery app that ensures fresh, purified water is always just a tap away, offering real-time tracking and scheduled deliveries.',
+    link: 'https://www.linkedin.com/posts/awais-ur-rehman-88615a217_waterdelivery-techinnovation-mobileappdevelopment-activity-7241447778776735744-LXij?utm_source=share&utm_medium=member_desktop',
     video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/XSfIvT7BUWbPRXhrbLed/ee6871c9-8400-49d2-8be9-e32675eabf7e.mp4?_a=DATAdtAAZAA0',
+      'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1738497330/oxyBlue_u7kzro.mp4',
     id: 'project2',
+  },
+  {
+    name: 'Otaku',
+    description:
+      'Otaku is a beautifully designed anime tracking app built with Flutter, allowing users to explore, track, and organize their favorite anime seamlessly.',
+    link: 'https://www.linkedin.com/posts/awais-ur-rehman-88615a217_flutter-animeapp-appdevelopment-activity-7266877454990913538-xvPJ?utm_source=share&utm_medium=member_desktop',
+    video:
+      'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1738497404/otaku_rz2c3i.mp4',
+    id: 'project3',
   },
 ]
 
+
 export const WORK_EXPERIENCE: WorkExperience[] = [
+  
   {
-    company: 'Reglazed Studio',
-    title: 'CEO',
-    start: '2024',
+    company: 'ISSM Labelling Solutions (Pvt) Ltd',
+    title: 'Junior Frontend Developer',
+    start: '2025',
     end: 'Present',
-    link: 'https://ibelick.com',
-    id: 'work1',
+    link: 'https://issm.ai/',
+    id: 'work3',
   },
   {
-    company: 'Freelance',
-    title: 'Design Engineer',
-    start: '2022',
-    end: '2024',
-    link: 'https://ibelick.com',
+    company: 'Ceven Technologies',
+    title: 'Chief Product Officer',
+    start: '2024',
+    end: 'Present',
+    link: 'https://www.ceventech.com/',
     id: 'work2',
   },
   {
     company: 'Freelance',
-    title: 'Front-end Developer',
+    title: 'Full Stack Developer',
     start: '2017',
     end: 'Present',
-    link: 'https://ibelick.com',
-    id: 'work3',
+    link: 'https://github.com/',
+    id: 'work4',
+  },
+  {
+    company: 'Urban Codez',
+    title: 'Frontend Developer',
+    start: '2023',
+    end: '2023',
+    link: 'https://urbancodez.com/',
+    id: 'work5',
   },
 ]
 
+
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title: 'Exploring the Intersection of Design, AI, and Design Engineering',
-    description: 'How AI is changing the way we design',
+    title: 'Why I Started My Own App Agency',
+    description:
+      'My journey from freelancing to building a cross-platform app agency.',
     link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
     uid: 'blog-1',
   },
   {
-    title: 'Why I left my job to start my own company',
+    title: 'Lessons from Building Scalable Mobile and Web Apps',
     description:
-      'A deep dive into my decision to leave my job and start my own company',
+      'Key takeaways from developing apps for real-world businesses.',
     link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
     uid: 'blog-2',
   },
   {
-    title: 'What I learned from my first year of freelancing',
+    title: 'The Future of Cross-Platform Development',
     description:
-      'A look back at my first year of freelancing and what I learned',
+      'Exploring Flutter, React Native, and the evolution of mobile development.',
     link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
     uid: 'blog-3',
   },
+  {
+    title: 'My Experience with AI-Powered App Development',
+    description:
+      'How AI tools are transforming the way I build and optimize applications.',
+    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    uid: 'blog-4',
+  },
 ]
+
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
-    link: 'https://github.com/ibelick',
+    link: 'https://github.com/awais-ur-rehman',
   },
   {
     label: 'Twitter',
-    link: 'https://twitter.com/ibelick',
+    link: '',
   },
   {
     label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/ibelick',
+    link: 'https://www.linkedin.com/in/awais-ur-rehman-88615a217/',
   },
   {
     label: 'Instagram',
-    link: 'https://www.instagram.com/ibelick',
+    link: 'tagram.com/_awais._.jarral_/',
   },
 ]
 
-export const EMAIL = 'your@email.com'
+export const EMAIL = 'awaisjarral37@gmail.com'
