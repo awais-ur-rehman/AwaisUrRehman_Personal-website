@@ -3,6 +3,8 @@ import { motion } from 'motion/react'
 import { XIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
+import { TechCard } from '@/components/ui/TechCard'
+import * as LucideIcons from 'lucide-react'
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -179,14 +181,13 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
       >
         <h3 className="mb-5 text-lg font-medium">Tools & Technologies</h3>
-        <div className="flex flex-wrap gap-3">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {TOOLS_AND_TECHNOLOGIES.map((tool) => (
-            <span
+            <TechCard
               key={tool.name}
-              className="rounded-full bg-zinc-200 px-4 py-2 text-sm font-medium text-zinc-900 dark:bg-zinc-700 dark:text-zinc-100"
-            >
-              {tool.name}
-            </span>
+              name={tool.name}
+              icon={tool.icon as keyof typeof LucideIcons}
+            />
           ))}
         </div>
       </motion.section>
