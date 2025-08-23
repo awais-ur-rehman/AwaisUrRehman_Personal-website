@@ -1,0 +1,113 @@
+{
+  "chunks": [
+    {
+      "id": "about-1",
+      "title": "About Me",
+      "content": "I am Awais Ur Rehman, a passionate Software Engineer, Full Stack Developer, and Product Innovator. With experience in startups, enterprises, and freelancing since 2017, I specialize in building cross-platform applications, AI-powered solutions, and scalable software for real-world businesses.",
+      "url": "/"
+    },
+    {
+      "id": "skills-1",
+      "title": "Skills & Tools",
+      "content": "Programming: Java, Python, JavaScript, Dart. Web: Next.js, Tailwind CSS, Bootstrap. Mobile: Flutter, React Native. Backend & Databases: MongoDB, MySQL, Firebase. Tools: Docker, Docker Compose, AWS, Git, Figma, VS Code, Android Studio, REST APIs.",
+      "url": "/#skills"
+    },
+    {
+      "id": "projects-1",
+      "title": "Projects Portfolio",
+      "content": "SANHA Pakistan — Halaal Certification Platform: modern certification and verification platform (https://www.sanha.org.pk/). OculaCare: 360° holistic eye healthcare solution (LinkedIn project link). ODIN — Social Listening Platform: real-time tracking & sentiment analysis for HBL (https://odin.hbl.com/). Alara — Customer Analytics & Workflow Platform: analytics for FBL & BAFL (https://alara.faysalbank.com/). OxyBlue: water delivery app with tracking & scheduling (LinkedIn project link). Otaku: Flutter anime tracking app (LinkedIn project link).",
+      "url": "/#projects"
+    },
+    {
+      "id": "experience-1",
+      "title": "Work Experience",
+      "content": "Senior Fullstack Developer — ISSM Labelling Solutions (2025–Present). Chief Product Officer — Ceven Technologies (2024–Present). Full Stack Developer — Freelance (2017–Present). Frontend Developer — Urban Codez (2023).",
+      "url": "/#experience"
+    },
+    {
+      "id": "education-1",
+      "title": "Education",
+      "content": "Bachelors in Software Engineering — COMSATS University, Islamabad (2021–2025). FSc — Government College University, Lahore (2016–2018).",
+      "url": "/#education"
+    },
+    {
+      "id": "awards-1",
+      "title": "Certificates & Awards",
+      "content": "Flutter Kahoot — Winner. Syberkoza — 1st Position. PSYWSC — Volunteer. AI Challenge 2024 (Securiti.ai) — 2nd Position & Best Presentation Award. COMSATS Industrial Expo 2024 — 1st Position.",
+      "url": "/#awards"
+    },
+    {
+      "id": "blog-1",
+      "title": "Blog Posts",
+      "content": "Why I Started My Own App Agency. Lessons from Building Scalable Mobile and Web Apps. The Future of Cross-Platform Development. My Experience with AI-Powered App Development.",
+      "url": "/blog"
+    },
+    {
+      "id": "contact-1",
+      "title": "Contact & Social",
+      "content": "Email: awaisjarral37@gmail.com. Phone: +92 344 5123196. Portfolio: https://awais-ur-rehman-personal-website.vercel.app/. GitHub: https://github.com/awais-ur-rehman. LinkedIn: https://www.linkedin.com/in/awais-ur-rehman-88615a217/. Instagram: https://instagram.com/_awais._.jarral_/.",
+      "url": "/#connect"
+    },
+    {
+      "id": "guidelines-1",
+      "title": "Bot Response Guidelines",
+      "content": "Tone: professional, confident, approachable. Style: clear, concise, bullet points. Provide links when possible. Adapt to context — direct for facts, detailed for projects/experience.",
+      "url": "/"
+    },
+    {
+      "id": "recruiter-roles-fit",
+      "title": "Roles & Fit (Recruiter)",
+      "content": "Target roles: Full Stack Developer, Frontend Engineer (React/Next.js), Mobile Engineer (Flutter), Product-minded Engineer. Strengths: delivering UX-focused, scalable apps; rapid prototyping; collaborating with product/design; owning features end-to-end.",
+      "url": "/#roles"
+    },
+    {
+      "id": "recruiter-core-skills",
+      "title": "Core Skills Summary (Recruiter)",
+      "content": "Frontend: React, Next.js, Tailwind CSS. Mobile: Flutter, React Native. Backend: Node/REST, Firebase; experience with Python/Java services. Databases: MongoDB, MySQL, Firebase. DevOps: Docker, Docker Compose, AWS (CloudFront, S3, ECS/Fargate, RDS/DynamoDB). Practices: CI/CD, testing, code review, observability.",
+      "url": "/#skills"
+    },
+    {
+      "id": "recruiter-experience-summary",
+      "title": "Experience Summary (Recruiter)",
+      "content": "8+ years including freelance (since 2017), product leadership (CPO at Ceven Technologies), and engineering roles (Frontend/Fullstack). Industries: Healthtech (OculaCare), Fintech/Analytics (ODIN, Alara), Certification (SANHA), Consumer apps (OxyBlue, Otaku).",
+      "url": "/#experience"
+    },
+    {
+      "id": "recruiter-location-availability",
+      "title": "Location & Availability (Recruiter)",
+      "content": "Location: Pakistan (PKT, UTC+5). Work: remote-first; open to contract or full-time. Collaboration: comfortable with async workflows and overlapping hours with EU/US teams when required.",
+      "url": "/#contact"
+    },
+    {
+      "id": "recruiter-project-highlights",
+      "title": "Project Highlights (Recruiter)",
+      "content": "OculaCare: mobile-first healthcare flows, secure data, smooth media; OxyBlue: real-time order tracking, scheduled deliveries; ODIN (HBL): social listening and sentiment analysis platform; Alara (Faysal/BAFL): customer analytics + workflow automation; SANHA: certification and verification portal. Focus: performance, reliability, and clear UX.",
+      "url": "/#projects"
+    },
+    {
+      "id": "recruiter-process-quality",
+      "title": "Process & Quality (Recruiter)",
+      "content": "Approach: requirement clarifying, rapid prototypes, iterate with users, production-readiness. Quality: TypeScript, linting, tests (unit/integration/E2E where needed), CI/CD, code reviews, monitoring and logs. Security: key/secret hygiene, least-privilege IAM, input validation.",
+      "url": "/#process"
+    },
+    {
+      "id": "recruiter-preferred-stack",
+      "title": "Preferred Stack (Recruiter)",
+      "content": "Web: Next.js (App Router), React Server Components, Tailwind CSS, Motion. Mobile: Flutter for consistent UI and performance; React Native when sharing TS domain makes sense. Backend: Next.js server routes/Firebase; Python/Node services. Infra: Docker/Compose locally, AWS for prod.",
+      "url": "/#stack"
+    },
+    {
+      "id": "recruiter-communication-collab",
+      "title": "Communication & Collaboration (Recruiter)",
+      "content": "Strong written communication; concise progress updates; async-first. Cross-functional collaboration with design/product/QA. Comfortable leading feature squads and mentoring juniors.",
+      "url": "/#collab"
+    },
+    {
+      "id": "recruiter-cta",
+      "title": "Call to Action (Recruiter)",
+      "content": "For roles or collaborations, reach out via LinkedIn (https://www.linkedin.com/in/awais-ur-rehman-88615a217/) or email (mailto:awaisjarral37@gmail.com). Portfolio: https://awais-ur-rehman-personal-website.vercel.app/",
+      "url": "/#connect"
+    }
+  ]
+}
+
