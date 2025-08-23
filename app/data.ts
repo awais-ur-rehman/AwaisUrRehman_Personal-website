@@ -35,13 +35,37 @@ type ToolAndTechnology = {
 
 export const PROJECTS: Project[] = [
   {
+    name: 'SANHA Pakistan — Halaal Certification Platform',
+    description:
+      'A modern web platform for SANHA Halaal Associates Pakistan, enabling brands to apply for and manage Halaal certification while helping the public verify products and ingredients with transparency.',
+    link: 'https://www.sanha.org.pk/',
+    video: 'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1755981713/Screen_Recording_2025-08-24_at_1.36.20_AM_p42dto.mov',
+    id: 'project1',
+  },
+  {
     name: 'OculaCare',
     description:
       'OculaCare is a 360° holistic eye healthcare solution, integrating advanced diagnostics and personalized care for optimal vision health.',
     link: 'https://www.linkedin.com/posts/awais-ur-rehman-88615a217_92disrupt-92disrupt-aichallenge2024-activity-7274777064333803520-gH2w?utm_source=share&utm_medium=member_desktop',
     video:
       'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1738497188/oculacare_mobile_dabdqf.mp4',
-    id: 'project1',
+    id: 'project2',
+  },
+  {
+    name: 'ODIN — Social Listening Platform',
+    description:
+      'ODIN is a powerful social listening and omni-channel engagement platform built for HBL Bank, enabling real-time tracking of customer voice across social media platforms. It features keyword tracking, sentiment analysis, and actionable insights to help the bank understand and respond to customer needs effectively.',
+    link: 'https://odin.hbl.com/',
+    video: 'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1755982523/Screen_Recording_2025-08-24_at_1.52.49_AM_onj2bl.mov',
+    id: 'project3',
+  },
+  {
+    name: 'Alara — Customer Analytics & Workflow Platform',
+    description:
+      'Alara is an advanced analytics and workflow management platform used by Faysal Bank (FBL) and Bank Alfalah (BAFL). It empowers banks to understand customer needs, visualize analytics, and streamline operations by creating dynamic workflows — ensuring better customer experiences and data-driven decision making.',
+    link: 'https://alara.faysalbank.com/',
+    video: 'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1755982628/Screen_Recording_2025-08-24_at_1.55.19_AM_yjuzlp.mov',
+    id: 'project4',
   },
   {
     name: 'OxyBlue',
@@ -49,7 +73,7 @@ export const PROJECTS: Project[] = [
     link: 'https://www.linkedin.com/posts/awais-ur-rehman-88615a217_waterdelivery-techinnovation-mobileappdevelopment-activity-7241447778776735744-LXij?utm_source=share&utm_medium=member_desktop',
     video:
       'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1738497330/oxyBlue_u7kzro.mp4',
-    id: 'project2',
+    id: 'project5',
   },
   {
     name: 'Otaku',
@@ -58,14 +82,14 @@ export const PROJECTS: Project[] = [
     link: 'https://www.linkedin.com/posts/awais-ur-rehman-88615a217_flutter-animeapp-appdevelopment-activity-7266877454990913538-xvPJ?utm_source=share&utm_medium=member_desktop',
     video:
       'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1738497404/otaku_rz2c3i.mp4',
-    id: 'project3',
+    id: 'project6',
   },
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     company: 'ISSM Labelling Solutions (Pvt) Ltd',
-    title: 'Junior Frontend Developer',
+    title: 'Senior Fullstack Developer',
     start: '2025',
     end: 'Present',
     link: 'https://issm.ai/',
