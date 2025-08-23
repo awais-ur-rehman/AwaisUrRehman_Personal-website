@@ -126,28 +126,28 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Why I Started My Own App Agency',
     description:
       'My journey from freelancing to building a cross-platform app agency.',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    link: '/blog/why-i-started-my-own-app-agency',
     uid: 'blog-1',
   },
   {
     title: 'Lessons from Building Scalable Mobile and Web Apps',
     description:
       'Key takeaways from developing apps for real-world businesses.',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    link: '/blog/lessons-from-building-scalable-mobile-and-web-apps',
     uid: 'blog-2',
   },
   {
     title: 'The Future of Cross-Platform Development',
     description:
       'Exploring Flutter, React Native, and the evolution of mobile development.',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    link: '/blog/the-future-of-cross-platform-development',
     uid: 'blog-3',
   },
   {
     title: 'My Experience with AI-Powered App Development',
     description:
       'How AI tools are transforming the way I build and optimize applications.',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    link: '/blog/my-experience-with-ai-powered-app-development',
     uid: 'blog-4',
   },
 ]
@@ -192,6 +192,9 @@ export const TOOLS_AND_TECHNOLOGIES: ToolAndTechnology[] = [
   { name: 'Figma', icon: 'PenTool' },
   { name: 'VS Code', icon: 'Code' },
   { name: 'Android Studio', icon: 'Smartphone' },
+  { name: 'Docker', icon: 'Package' },
+  { name: 'Docker Compose', icon: 'Layers' },
+  { name: 'AWS', icon: 'Cloud' },
 ]
 
 
