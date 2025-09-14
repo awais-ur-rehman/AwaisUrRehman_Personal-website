@@ -27,7 +27,7 @@ export function Header() {
             href="https://www.linkedin.com/in/awais-ur-rehman-88615a217/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-zinc-900 px-3 py-1.5 text-sm text-zinc-50 ring-1 ring-zinc-800 transition-colors hover:bg-zinc-950 dark:bg-zinc-50 dark:text-zinc-900 dark:ring-zinc-200 dark:hover:bg-zinc-100"
+            className="inline-flex items-center gap-2 rounded-full bg-zinc-900 px-3 py-1.5 text-sm text-zinc-50 ring-1 ring-zinc-800 transition-colors hover:bg-zinc-950 dark:bg-zinc-50 dark:text-zinc-900 dark:ring-zinc-200 dark:hover:bg-zinc-100 btn-shimmer"
             aria-label="Hire me on LinkedIn"
           >
             <Linkedin className="h-4 w-4" />

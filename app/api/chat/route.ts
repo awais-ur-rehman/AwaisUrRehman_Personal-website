@@ -4,6 +4,18 @@ import path from 'path'
 import type { KnowledgeBase } from '@/lib/rag'
 import { buildTfIdfIndex, retrieveTopK } from '@/lib/rag'
 
+let kbCache: KnowledgeBase | null = null
+let indexCache: ReturnType<typeof buildTfIdfIndex> | null = null
+
+async function getIndex(): Promise<ReturnType<typeof buildTfIdfIndex>> {
+  if (indexCache) return indexCache
+  const kbPath = path.join(process.cwd(), 'public', 'knowledge.json')
+  const raw = await readFile(kbPath, 'utf8')
+  kbCache = JSON.parse(raw) as KnowledgeBase
+  indexCache = buildTfIdfIndex(kbCache.chunks)
+  return indexCache
+}
+
 export async function POST(req: Request) {
   try {
     const { message } = await req.json()
@@ -11,11 +23,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Invalid message' }, { status: 400 })
     }
 
-    const kbPath = path.join(process.cwd(), 'public', 'knowledge.json')
-    const raw = await readFile(kbPath, 'utf8')
-    const kb = JSON.parse(raw) as KnowledgeBase
-
-    const index = buildTfIdfIndex(kb.chunks)
+    const index = await getIndex()
     const top = retrieveTopK(index, message, 4)
 
     const context = top
@@ -36,7 +44,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: fallback, sources })
     }
 
-    const model = 'llama3-70b-8192'
+    const model = 'llama-3.1-70b-versatile'
     const userPrompt = `Question: ${message}\n\nContext:\n${context}`
 
     const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -56,8 +64,15 @@ export async function POST(req: Request) {
     })
 
     if (!groqRes.ok) {
+      // Graceful fallback using retrieved context
       const err = await groqRes.text()
-      return NextResponse.json({ error: 'Groq error', detail: err }, { status: 500 })
+      const fallback = `Here is a concise answer based on my knowledge base:\n\n${context}`
+      const sources = top.map((t, idx) => ({
+        id: `#${idx + 1}`,
+        title: t.chunk.title,
+        url: t.chunk.url || null,
+      }))
+      return NextResponse.json({ message: fallback, sources, warning: 'LLM unavailable', detail: err })
     }
     const data = await groqRes.json()
     const content = data?.choices?.[0]?.message?.content || 'Sorry, no answer.'

@@ -1,5 +1,5 @@
 'use client'
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 import { XIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
+import { Tilt } from '@/components/ui/tilt'
 import {
   PROJECTS,
   WORK_EXPERIENCE,
@@ -103,6 +104,8 @@ function MagneticSocialLink({
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
+        target={link?.startsWith('http') ? '_blank' : undefined}
+        rel={link?.startsWith('http') ? 'noopener noreferrer' : undefined}
         className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
       >
         {children}
@@ -127,16 +130,24 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
+  const prefersReduced = useReducedMotion()
+  const containerVariants = prefersReduced
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
+    : VARIANTS_CONTAINER
+  const sectionVariants = prefersReduced
+    ? { hidden: { opacity: 1, y: 0, filter: 'none' }, visible: { opacity: 1, y: 0, filter: 'none' } }
+    : VARIANTS_SECTION
+  const transitionSection = prefersReduced ? { duration: 0 } : TRANSITION_SECTION
   return (
     <motion.main
       className="space-y-24"
-      variants={VARIANTS_CONTAINER}
+      variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
+        variants={sectionVariants}
+        transition={transitionSection}
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
@@ -148,21 +159,24 @@ export default function Personal() {
       </motion.section>
 
       <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
+        variants={sectionVariants}
+        transition={transitionSection}
       >
         <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
-              <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
-              </div>
+              <Tilt className="[transform-style:preserve-3d]">
+                <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
+                  <ProjectVideo src={project.video} />
+                </div>
+              </Tilt>
               <div className="px-1">
                 <a
                   className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
                   href={project.link}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {project.name}
                   <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
@@ -177,11 +191,24 @@ export default function Personal() {
       </motion.section>
 
       <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
+        variants={sectionVariants}
+        transition={transitionSection}
       >
         <h3 className="mb-5 text-lg font-medium">Tools & Technologies</h3>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        {/* Mobile marquee */}
+        <div className="sm:hidden overflow-hidden">
+          <div className="marquee-track gap-3 pr-3">
+            {[...TOOLS_AND_TECHNOLOGIES, ...TOOLS_AND_TECHNOLOGIES].map((tool, idx) => (
+              <div key={`${tool.name}-${idx}`} className="mr-3 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white/80 px-3 py-1 text-xs text-zinc-800 dark:border-zinc-700 dark:bg-zinc-900/60 dark:text-zinc-100">
+                {/* simple icon dot to avoid heavy imports here */}
+                <span className="h-2 w-2 rounded-full bg-zinc-500" />
+                {tool.name}
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Desktop/grid */}
+        <div className="hidden grid-cols-2 gap-4 sm:grid sm:grid-cols-3 lg:grid-cols-4">
           {TOOLS_AND_TECHNOLOGIES.map((tool) => (
             <TechCard
               key={tool.name}
@@ -193,8 +220,8 @@ export default function Personal() {
       </motion.section>
 
       <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
+        variants={sectionVariants}
+        transition={transitionSection}
       >
         <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
         <div className="flex flex-col space-y-2">
@@ -231,8 +258,8 @@ export default function Personal() {
       </motion.section>
 
       <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
+        variants={sectionVariants}
+        transition={transitionSection}
       >
         <h3 className="mb-3 text-lg font-medium">Blog</h3>
         <div className="flex flex-col space-y-0">
@@ -252,14 +279,20 @@ export default function Personal() {
                 href={post.link}
                 data-id={post.uid}
               >
-                <div className="flex flex-col space-y-1">
+                <motion.div
+                  className="flex flex-col space-y-1"
+                  initial={prefersReduced ? undefined : { opacity: 0, y: 8, filter: 'blur(6px)' }}
+                  whileInView={prefersReduced ? undefined : { opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.25 }}
+                >
                   <h4 className="font-normal dark:text-zinc-100">
                     {post.title}
                   </h4>
                   <p className="text-zinc-500 dark:text-zinc-400">
                     {post.description}
                   </p>
-                </div>
+                </motion.div>
               </Link>
             ))}
           </AnimatedBackground>
@@ -267,8 +300,8 @@ export default function Personal() {
       </motion.section>
 
       <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
+        variants={sectionVariants}
+        transition={transitionSection}
       >
         <h3 className="mb-5 text-lg font-medium">Connect</h3>
         <p className="mb-5 text-zinc-600 dark:text-zinc-400">
