@@ -1,4 +1,5 @@
 'use client'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'motion/react'
 import { XIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
@@ -46,42 +47,120 @@ type ProjectVideoProps = {
   src: string
 }
 
-function getYouTubeEmbedUrl(url: string): string | null {
-  const patterns = [
+function getYouTubeId(url: string): string | null {
+  const match = url.match(
     /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]+)/,
-  ]
-  for (const pattern of patterns) {
-    const match = url.match(pattern)
-    if (match) return `https://www.youtube.com/embed/${match[1]}`
-  }
-  return null
+  )
+  return match ? match[1] : null
+}
+
+/**
+ * Convert a Cloudinary video URL to use auto-format (f_auto)
+ * which serves WebM where supported — smaller files, same quality.
+ */
+function optimizeCloudinaryUrl(url: string): string {
+  const cloudinaryPattern =
+    /^(https:\/\/res\.cloudinary\.com\/[^/]+\/video\/upload\/)(v\d+\/.+)$/
+  const match = url.match(cloudinaryPattern)
+  if (!match) return url
+  return `${match[1]}f_auto/${match[2]}`
+}
+
+function getCloudinaryPoster(url: string): string | null {
+  const cloudinaryPattern =
+    /^(https:\/\/res\.cloudinary\.com\/[^/]+\/)video(\/upload\/)(v\d+\/)(.+)\.\w+$/
+  const match = url.match(cloudinaryPattern)
+  if (!match) return null
+  return `${match[1]}image${match[2]}f_auto,q_auto,w_640,so_0/${match[3]}${match[4]}.jpg`
+}
+
+function VideoSkeleton() {
+  return (
+    <div className="aspect-video w-full animate-pulse rounded-xl bg-zinc-200 dark:bg-zinc-800">
+      <div className="flex h-full items-center justify-center">
+        <div className="h-10 w-10 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+      </div>
+    </div>
+  )
 }
 
 function ProjectVideo({ src }: ProjectVideoProps) {
-  const youtubeUrl = getYouTubeEmbedUrl(src)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
 
-  if (youtubeUrl) {
+  // YouTube: show poster first, load iframe on interaction
+  const ytId = getYouTubeId(src)
+  const [ytActive, setYtActive] = useState(false)
+
+  // Intersection Observer: only load when in viewport
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '200px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  // Auto-play video when visible
+  useEffect(() => {
+    if (isVisible && videoRef.current) {
+      videoRef.current.play().catch(() => {})
+    }
+  }, [isVisible])
+
+  if (ytId) {
+    const ytPoster = `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`
     return (
       <MorphingDialog
-        transition={{
-          type: 'spring',
-          bounce: 0,
-          duration: 0.3,
-        }}
+        transition={{ type: 'spring', bounce: 0, duration: 0.3 }}
       >
         <MorphingDialogTrigger>
-          <iframe
-            src={youtubeUrl}
-            title="Project video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="aspect-video w-full cursor-zoom-in rounded-xl"
-          />
+          <div
+            ref={containerRef}
+            className="relative aspect-video w-full cursor-zoom-in overflow-hidden rounded-xl"
+            onClick={() => setYtActive(true)}
+          >
+            {!ytActive ? (
+              <>
+                <img
+                  src={ytPoster}
+                  alt="Video thumbnail"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-lg">
+                    <svg className="ml-1 h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <iframe
+                src={`https://www.youtube.com/embed/${ytId}?autoplay=1`}
+                title="Project video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full"
+              />
+            )}
+          </div>
         </MorphingDialogTrigger>
         <MorphingDialogContainer>
           <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
             <iframe
-              src={youtubeUrl}
+              src={`https://www.youtube.com/embed/${ytId}?autoplay=1`}
               title="Project video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -106,30 +185,41 @@ function ProjectVideo({ src }: ProjectVideoProps) {
     )
   }
 
+  // Cloudinary videos: optimize URL and generate poster
+  const optimizedSrc = optimizeCloudinaryUrl(src)
+  const poster = getCloudinaryPoster(src)
+
   return (
     <MorphingDialog
-      transition={{
-        type: 'spring',
-        bounce: 0,
-        duration: 0.3,
-      }}
+      transition={{ type: 'spring', bounce: 0, duration: 0.3 }}
     >
       <MorphingDialogTrigger>
-        <video
-          src={src}
-          autoPlay
-          loop
-          muted
-          className="aspect-video w-full cursor-zoom-in rounded-xl"
-        />
+        <div ref={containerRef} className="relative aspect-video w-full cursor-zoom-in overflow-hidden rounded-xl">
+          {!isLoaded && <VideoSkeleton />}
+          {isVisible && (
+            <video
+              ref={videoRef}
+              src={optimizedSrc}
+              poster={poster || undefined}
+              preload="metadata"
+              autoPlay
+              loop
+              muted
+              playsInline
+              onLoadedData={() => setIsLoaded(true)}
+              className={`absolute inset-0 h-full w-full rounded-xl object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+            />
+          )}
+        </div>
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
           <video
-            src={src}
+            src={optimizedSrc}
             autoPlay
             loop
             muted
+            playsInline
             className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
           />
         </MorphingDialogContent>
