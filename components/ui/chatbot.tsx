@@ -50,6 +50,23 @@ function applyInlineMarkdown(s: string) {
   return html
 }
 
+function isListLine(line: string): boolean {
+  const t = line.trim()
+  return (
+    t.startsWith('- ') ||
+    t.startsWith('* ') ||
+    t.startsWith('• ') ||
+    /^\d+[.)]\s/.test(t)
+  )
+}
+
+function cleanListItem(line: string): string {
+  return line
+    .replace(/^[\s]*[-*•]\s?/, '')
+    .replace(/^\d+[.)]\s?/, '')
+    .trim()
+}
+
 function MessageContent({ content }: { content: string }) {
   const blocks = content.split('\n\n')
 
@@ -58,44 +75,51 @@ function MessageContent({ content }: { content: string }) {
       {blocks.map((block, bi) => {
         const lines = block.split('\n').filter((l) => l.trim())
 
-        // Check if block is a list
-        const listLines = lines.filter(
-          (l) => l.trim().startsWith('-') || /^\d+\./.test(l.trim()),
-        )
-        const isList = listLines.length > 0 && listLines.length >= lines.length * 0.5
-
-        if (isList) {
-          return (
-            <ul key={bi} className="ml-4 list-disc space-y-0.5">
-              {lines.map((l, li) => {
-                const cleaned = l
-                  .replace(/^[-*•]\s?/, '')
-                  .replace(/^\d+\.\s?/, '')
-                  .trim()
-                if (!cleaned) return null
-                return (
-                  <li
-                    key={li}
-                    className="leading-relaxed"
-                    dangerouslySetInnerHTML={{
-                      __html: applyInlineMarkdown(cleaned),
-                    }}
-                  />
-                )
-              })}
-            </ul>
-          )
+        // Group consecutive lines into segments: paragraph or list
+        const segments: { type: 'p' | 'list'; lines: string[] }[] = []
+        for (const line of lines) {
+          const isList = isListLine(line)
+          const last = segments[segments.length - 1]
+          if (last && ((isList && last.type === 'list') || (!isList && last.type === 'p'))) {
+            last.lines.push(line)
+          } else {
+            segments.push({ type: isList ? 'list' : 'p', lines: [line] })
+          }
         }
 
-        // Regular paragraph
         return (
-          <p
-            key={bi}
-            className="leading-relaxed"
-            dangerouslySetInnerHTML={{
-              __html: applyInlineMarkdown(block.trim()),
-            }}
-          />
+          <div key={bi} className="space-y-1.5">
+            {segments.map((seg, si) => {
+              if (seg.type === 'list') {
+                return (
+                  <ul key={si} className="ml-4 list-disc space-y-0.5">
+                    {seg.lines.map((l, li) => {
+                      const cleaned = cleanListItem(l)
+                      if (!cleaned) return null
+                      return (
+                        <li
+                          key={li}
+                          className="leading-relaxed"
+                          dangerouslySetInnerHTML={{
+                            __html: applyInlineMarkdown(cleaned),
+                          }}
+                        />
+                      )
+                    })}
+                  </ul>
+                )
+              }
+              return (
+                <p
+                  key={si}
+                  className="leading-relaxed"
+                  dangerouslySetInnerHTML={{
+                    __html: applyInlineMarkdown(seg.lines.join(' ').trim()),
+                  }}
+                />
+              )
+            })}
+          </div>
         )
       })}
     </div>
