@@ -3,111 +3,104 @@
     {
       "id": "about-1",
       "title": "About Me",
-      "content": "I am Awais Ur Rehman, a passionate Software Engineer, Full Stack Developer, and Product Innovator. With experience in startups, enterprises, and freelancing since 2017, I specialize in building cross-platform applications, AI-powered solutions, and scalable software for real-world businesses.",
+      "content": "I'm Awais Ur Rehman, a full stack developer with 3 years of professional experience. I build web and mobile applications end to end, from database design to production deployment. My work is currently running at Pakistan's two largest banks (UBL and HBL) through the Odin social listening platform, and SANHA Pakistan's certification portal handles 50K+ monthly users. I graduated from COMSATS University Islamabad with a BS in Software Engineering in 2025.",
       "url": "/"
     },
     {
       "id": "skills-1",
       "title": "Skills & Tools",
-      "content": "Programming: Java, Python, JavaScript, Dart. Web: Next.js, Tailwind CSS, Bootstrap. Mobile: Flutter, React Native. Backend & Databases: MongoDB, MySQL, Firebase. Tools: Docker, Docker Compose, AWS, Git, Figma, VS Code, Android Studio, REST APIs.",
+      "content": "Languages: JavaScript, TypeScript, Python, Dart. Frontend: React, Next.js, Tailwind CSS, Bootstrap. Mobile: Flutter. Backend: Node.js, Express.js, REST APIs, WebSockets, Redis Pub/Sub, Bull Queue, FastAPI. Databases: MongoDB, MySQL, Firebase, Supabase, Neo4j. AI/ML: Custom CNN models, ML Kit, RAG pipelines, Generative AI, Google Gemini, Google ADK, Vertex AI, TensorFlow. DevOps: Docker, Docker Compose, Nginx, GCP, Google Cloud Run, Vercel, Render, Git, CI/CD.",
       "url": "/#skills"
     },
     {
       "id": "projects-1",
       "title": "Projects Portfolio",
-      "content": "SANHA Pakistan — Halaal Certification Platform: modern certification and verification platform (https://www.sanha.org.pk/). OculaCare: 360° holistic eye healthcare solution (LinkedIn project link). ODIN — Social Listening Platform: real-time tracking & sentiment analysis for HBL (https://odin.hbl.com/). Alara — Customer Analytics & Workflow Platform: analytics for FBL & BAFL (https://alara.faysalbank.com/). OxyBlue: water delivery app with tracking & scheduling (LinkedIn project link). Otaku: Flutter anime tracking app (LinkedIn project link).",
+      "content": "ODIN (Social Listening Platform): Built for UBL and HBL. Microservice architecture with Node.js + Python, Redis Pub/Sub, Docker Compose. Integrated Meta Business API. Reduced message processing from 1.4 minutes to 0.4 seconds. Includes sentiment analysis, auto-categorization, unified inbox, marketing dashboard. Link: https://odin.hbl.com/",
+      "url": "/#projects"
+    },
+    {
+      "id": "projects-2",
+      "title": "OculaCare Project",
+      "content": "OculaCare (AI Eye Disease Detection): Flutter app with custom CNN models, Neo4j graph-based symptom analysis, RAG treatment recommendations. Validated with ophthalmologists at WATIM Hospital. Won 1st at COMSATS Industrial Expo 2024 and 2nd at Securiti.ai AI Security Challenge.",
+      "url": "/#projects"
+    },
+    {
+      "id": "projects-3",
+      "title": "SANHA & Alara Projects",
+      "content": "SANHA Pakistan: Full website and admin portal (React + Node.js). 50K+ monthly users. Page load cut from 4.2s to 2.3s. JWT auth with role-based dashboards. Link: https://www.sanha.org.pk/. Alara (Customer Analytics): Analytics and workflow platform for Faysal Bank and Bank Alfalah. Link: https://alara.faysalbank.com/",
+      "url": "/#projects"
+    },
+    {
+      "id": "projects-4",
+      "title": "OxyBlue, Nomadly & Other Projects",
+      "content": "OxyBlue (Water Delivery): Offline-first Flutter + Node.js app. Riders work without internet, sync when reconnected. Cut fulfillment from 25 to 15 minutes. Nomadly: Invite-only social app for digital nomads. Flutter + Node.js + WebSockets. Real-time messaging, verified invite chain. MedLens (In Progress): Real-time first aid AI using Google ADK, Gemini Live, Vertex AI RAG. Audio and video-based injury assessment. RigZone LLC: Multi-vendor platform built with Next.js + PHP. Link: https://rigzonellc.com/. IAE: Coursera-style learning platform (MERN stack) launched in government partnership. Link: https://www.iae.com.pk/welcome. Otaku: Anime social network with Flutter + Node.js.",
       "url": "/#projects"
     },
     {
       "id": "experience-1",
       "title": "Work Experience",
-      "content": "Senior Fullstack Developer — ISSM Labelling Solutions (2025–Present). Chief Product Officer — Ceven Technologies (2024–Present). Full Stack Developer — Freelance (2017–Present). Frontend Developer — Urban Codez (2023).",
+      "content": "Full Stack Developer at Bridgeframe (Sep 2025 to present, Karachi). Built SANHA Pakistan's website, RigZone LLC platform, and company portfolio site. Full Stack Developer at ISSM Labelling Solutions (Jan 2025 to Sep 2025, Islamabad). Built Odin social listening platform, Alara analytics platform, IAE learning platform, and UBL WhatsApp banking widget. Full Stack Lead at Ceven Technologies (Jun 2024 to Dec 2024, Remote). Led technical direction, architecture decisions, and delivery. Full Stack Developer at OxyBlue (Nov 2023 to Jun 2024, Karachi). Built the water delivery platform with offline-first architecture. Web Development Intern at Urban Codes (Mar 2023 to Aug 2023, Islamabad). Built the Nafees client website.",
       "url": "/#experience"
     },
     {
       "id": "education-1",
       "title": "Education",
-      "content": "Bachelors in Software Engineering — COMSATS University, Islamabad (2021–2025). FSc — Government College University, Lahore (2016–2018).",
+      "content": "Bachelor of Software Engineering, COMSATS University Islamabad (2021 to 2025).",
       "url": "/#education"
     },
     {
       "id": "awards-1",
-      "title": "Certificates & Awards",
-      "content": "Flutter Kahoot — Winner. Syberkoza — 1st Position. PSYWSC — Volunteer. AI Challenge 2024 (Securiti.ai) — 2nd Position & Best Presentation Award. COMSATS Industrial Expo 2024 — 1st Position.",
+      "title": "Awards & Recognition",
+      "content": "1st Place at COMSATS Industrial Expo 2024. 2nd Place at Securiti.ai AI Security Challenge 2024. Best Presentation Award at AI Challenge 2024. Flutter Kahoot Quiz Winner. 1st Position at Syberkoza.",
       "url": "/#awards"
     },
     {
       "id": "blog-1",
       "title": "Blog Posts",
-      "content": "Why I Started My Own App Agency. Lessons from Building Scalable Mobile and Web Apps. The Future of Cross-Platform Development. My Experience with AI-Powered App Development.",
+      "content": "How I cut message processing from 1.4 minutes to 0.4 seconds at Pakistan's largest banks. Building offline-first apps: lessons from a water delivery fleet. What I learned building an AI eye disease detector with real doctors. Building AI agents that actually help: MedLens and what I'm learning.",
       "url": "/blog"
     },
     {
       "id": "contact-1",
       "title": "Contact & Social",
-      "content": "Email: awaisjarral37@gmail.com. Phone: +92 344 5123196. Portfolio: https://awais-ur-rehman-personal-website.vercel.app/. GitHub: https://github.com/awais-ur-rehman. LinkedIn: https://www.linkedin.com/in/awais-ur-rehman-88615a217/. Instagram: https://instagram.com/_awais._.jarral_/.",
+      "content": "Email: awaisjarral37@gmail.com. Phone: +92 344 5123196. Portfolio: https://awais-ur-rehman.vercel.app/. GitHub: https://github.com/awais-ur-rehman. LinkedIn: https://www.linkedin.com/in/awais-ur-rehman-88615a217/. Instagram: https://instagram.com/_awais._.jarral_/.",
       "url": "/#connect"
-    },
-    {
-      "id": "guidelines-1",
-      "title": "Bot Response Guidelines",
-      "content": "Tone: professional, confident, approachable. Style: clear, concise, bullet points. Provide links when possible. Adapt to context — direct for facts, detailed for projects/experience.",
-      "url": "/"
     },
     {
       "id": "recruiter-roles-fit",
       "title": "Roles & Fit (Recruiter)",
-      "content": "Target roles: Full Stack Developer, Frontend Engineer (React/Next.js), Mobile Engineer (Flutter), Product-minded Engineer. Strengths: delivering UX-focused, scalable apps; rapid prototyping; collaborating with product/design; owning features end-to-end.",
+      "content": "Target roles: Full Stack Developer (MERN), Frontend Engineer (React/Next.js), Flutter/Mobile Developer, AI/ML Engineer (applied). Open to remote positions globally and on-site in Pakistan. Particularly interested in European startups. Strengths: shipping production apps end to end, performance optimization (documented 1.4min to 0.4s improvement), offline-first mobile architecture, integrating ML models into user-facing products, working with real stakeholders (doctors, bank teams) to validate solutions.",
       "url": "/#roles"
     },
     {
       "id": "recruiter-core-skills",
       "title": "Core Skills Summary (Recruiter)",
-      "content": "Frontend: React, Next.js, Tailwind CSS. Mobile: Flutter, React Native. Backend: Node/REST, Firebase; experience with Python/Java services. Databases: MongoDB, MySQL, Firebase. DevOps: Docker, Docker Compose, AWS (CloudFront, S3, ECS/Fargate, RDS/DynamoDB). Practices: CI/CD, testing, code review, observability.",
+      "content": "Frontend: React, Next.js, Tailwind CSS, TypeScript. Mobile: Flutter (offline-first, ML integration). Backend: Node.js, Express, REST APIs, WebSockets, Redis, Bull Queue, Python/FastAPI. Databases: MongoDB, MySQL, Firebase, Supabase, Neo4j. AI/ML: Custom CNN models, RAG pipelines, Google Gemini/ADK, Vertex AI, ML Kit. DevOps: Docker, Docker Compose, Nginx, GCP, Vercel, Render, Git, CI/CD.",
       "url": "/#skills"
     },
     {
       "id": "recruiter-experience-summary",
       "title": "Experience Summary (Recruiter)",
-      "content": "8+ years including freelance (since 2017), product leadership (CPO at Ceven Technologies), and engineering roles (Frontend/Fullstack). Industries: Healthtech (OculaCare), Fintech/Analytics (ODIN, Alara), Certification (SANHA), Consumer apps (OxyBlue, Otaku).",
+      "content": "3 years of professional experience across startups and enterprise software. Built products used by Pakistan's largest banks (UBL, HBL), shipped 10+ production applications. Industries: fintech (Odin, Alara), healthtech (OculaCare, MedLens, PHJI), certification (SANHA), logistics (OxyBlue), consumer apps (Otaku, Nomadly).",
       "url": "/#experience"
     },
     {
       "id": "recruiter-location-availability",
       "title": "Location & Availability (Recruiter)",
-      "content": "Location: Pakistan (PKT, UTC+5). Work: remote-first; open to contract or full-time. Collaboration: comfortable with async workflows and overlapping hours with EU/US teams when required.",
+      "content": "Location: Pakistan (PKT, UTC+5). Preference: remote-first. Open to contract or full-time. Comfortable with async workflows and overlapping hours with EU/US teams.",
       "url": "/#contact"
-    },
-    {
-      "id": "recruiter-project-highlights",
-      "title": "Project Highlights (Recruiter)",
-      "content": "OculaCare: mobile-first healthcare flows, secure data, smooth media; OxyBlue: real-time order tracking, scheduled deliveries; ODIN (HBL): social listening and sentiment analysis platform; Alara (Faysal/BAFL): customer analytics + workflow automation; SANHA: certification and verification portal. Focus: performance, reliability, and clear UX.",
-      "url": "/#projects"
     },
     {
       "id": "recruiter-process-quality",
       "title": "Process & Quality (Recruiter)",
-      "content": "Approach: requirement clarifying, rapid prototypes, iterate with users, production-readiness. Quality: TypeScript, linting, tests (unit/integration/E2E where needed), CI/CD, code reviews, monitoring and logs. Security: key/secret hygiene, least-privilege IAM, input validation.",
+      "content": "Approach: understand the problem first, prototype fast, iterate with real user feedback, then harden for production. Quality: TypeScript, linting, testing, CI/CD, code reviews, structured logging. Security: JWT auth, RBAC, input validation, environment-scoped secrets.",
       "url": "/#process"
     },
     {
-      "id": "recruiter-preferred-stack",
-      "title": "Preferred Stack (Recruiter)",
-      "content": "Web: Next.js (App Router), React Server Components, Tailwind CSS, Motion. Mobile: Flutter for consistent UI and performance; React Native when sharing TS domain makes sense. Backend: Next.js server routes/Firebase; Python/Node services. Infra: Docker/Compose locally, AWS for prod.",
-      "url": "/#stack"
-    },
-    {
-      "id": "recruiter-communication-collab",
-      "title": "Communication & Collaboration (Recruiter)",
-      "content": "Strong written communication; concise progress updates; async-first. Cross-functional collaboration with design/product/QA. Comfortable leading feature squads and mentoring juniors.",
-      "url": "/#collab"
-    },
-    {
-      "id": "recruiter-cta",
-      "title": "Call to Action (Recruiter)",
-      "content": "For roles or collaborations, reach out via LinkedIn (https://www.linkedin.com/in/awais-ur-rehman-88615a217/) or email (mailto:awaisjarral37@gmail.com). Portfolio: https://awais-ur-rehman-personal-website.vercel.app/",
-      "url": "/#connect"
+      "id": "guidelines-1",
+      "title": "Bot Response Guidelines",
+      "content": "Tone: direct, specific, no filler. Use concrete numbers and project names. Provide links when relevant. Don't inflate experience or use promotional language. If asked about something Awais hasn't done, say so honestly.",
+      "url": "/"
     }
   ]
 }
-

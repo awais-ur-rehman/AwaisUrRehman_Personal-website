@@ -32,90 +32,110 @@ type ToolAndTechnology = {
   icon: string
 }
 
-
 export const PROJECTS: Project[] = [
   {
-    name: 'SANHA Pakistan — Halaal Certification Platform',
+    name: 'ODIN — Social Listening Platform',
     description:
-      'A modern web platform for SANHA Halaal Associates Pakistan, enabling brands to apply for and manage Halaal certification while helping the public verify products and ingredients with transparency.',
-    link: 'https://www.sanha.org.pk/',
-    video: 'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1755981713/Screen_Recording_2025-08-24_at_1.36.20_AM_p42dto.mov',
+      'A social listening and customer engagement platform running in production at UBL and HBL. Microservice backend (Node.js + Python, Redis Pub/Sub, Docker Compose), integrated Meta Business API. Reduced message processing from 1.4 minutes to 0.4 seconds.',
+    link: 'https://odin.hbl.com/',
+    video:
+      'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1755982523/Screen_Recording_2025-08-24_at_1.52.49_AM_onj2bl.mov',
     id: 'project1',
   },
   {
-    name: 'OculaCare',
+    name: 'OculaCare — AI Eye Disease Detection',
     description:
-      'OculaCare is a 360° holistic eye healthcare solution, integrating advanced diagnostics and personalized care for optimal vision health.',
+      'Won 1st at COMSATS Industrial Expo 2024 and 2nd at Securiti.ai AI Challenge. Flutter app with custom CNN models, Neo4j graph-based symptom analysis, and RAG treatment recommendations. Validated with ophthalmologists at WATIM Hospital.',
     link: 'https://www.linkedin.com/posts/awais-ur-rehman-88615a217_92disrupt-92disrupt-aichallenge2024-activity-7274777064333803520-gH2w?utm_source=share&utm_medium=member_desktop',
     video:
       'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1738497188/oculacare_mobile_dabdqf.mp4',
     id: 'project2',
   },
   {
-    name: 'ODIN — Social Listening Platform',
+    name: 'SANHA Pakistan — Halaal Certification Platform',
     description:
-      'ODIN is a powerful social listening and omni-channel engagement platform built for HBL Bank, enabling real-time tracking of customer voice across social media platforms. It features keyword tracking, sentiment analysis, and actionable insights to help the bank understand and respond to customer needs effectively.',
-    link: 'https://odin.hbl.com/',
-    video: 'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1755982523/Screen_Recording_2025-08-24_at_1.52.49_AM_onj2bl.mov',
+      'Complete website and admin portal for SANHA Halaal Associates Pakistan. 50K+ monthly users. Cut page load from 4.2s to 2.3s through image optimization and API batching. JWT auth with role-based dashboards.',
+    link: 'https://www.sanha.org.pk/',
+    video:
+      'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1755981713/Screen_Recording_2025-08-24_at_1.36.20_AM_p42dto.mov',
     id: 'project3',
   },
   {
     name: 'Alara — Customer Analytics & Workflow Platform',
     description:
-      'Alara is an advanced analytics and workflow management platform used by Faysal Bank (FBL) and Bank Alfalah (BAFL). It empowers banks to understand customer needs, visualize analytics, and streamline operations by creating dynamic workflows — ensuring better customer experiences and data-driven decision making.',
+      'An analytics and workflow management platform used by Faysal Bank and Bank Alfalah. Helps banks understand customer behavior through data visualization and build dynamic operational workflows.',
     link: 'https://alara.faysalbank.com/',
-    video: 'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1755982628/Screen_Recording_2025-08-24_at_1.55.19_AM_yjuzlp.mov',
+    video:
+      'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1755982628/Screen_Recording_2025-08-24_at_1.55.19_AM_yjuzlp.mov',
     id: 'project4',
   },
   {
-    name: 'OxyBlue',
-    description: 'OxyBlue is a seamless water delivery app that ensures fresh, purified water is always just a tap away, offering real-time tracking and scheduled deliveries.',
+    name: 'OxyBlue — Offline-First Water Delivery',
+    description:
+      'Offline-first water delivery platform built with Flutter and Node.js. Riders work without internet and sync when reconnected. Cut average fulfillment time from 25 to 15 minutes.',
     link: 'https://www.linkedin.com/posts/awais-ur-rehman-88615a217_waterdelivery-techinnovation-mobileappdevelopment-activity-7241447778776735744-LXij?utm_source=share&utm_medium=member_desktop',
     video:
       'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1738497330/oxyBlue_u7kzro.mp4',
     id: 'project5',
   },
   {
-    name: 'Otaku',
+    name: 'Otaku — Anime Social Network',
     description:
-      'Otaku is a beautifully designed anime tracking app built with Flutter, allowing users to explore, track, and organize their favorite anime seamlessly.',
+      'A social app for anime fans built with Flutter and Node.js. News feeds, discussion forums, social feed with posts, comments, and likes. Complete client and backend.',
     link: 'https://www.linkedin.com/posts/awais-ur-rehman-88615a217_flutter-animeapp-appdevelopment-activity-7266877454990913538-xvPJ?utm_source=share&utm_medium=member_desktop',
     video:
       'https://res.cloudinary.com/ddxlz9oxs/video/upload/v1738497404/otaku_rz2c3i.mp4',
     id: 'project6',
   },
+  {
+    name: 'Nomadly — Social Platform for Digital Nomads',
+    description:
+      'An invite-only social app for the vanlife community. Solves safety on the road, loneliness between stops, and decision fatigue. Built with Flutter, Node.js, and WebSockets for real-time messaging.',
+    link: 'https://youtu.be/ymUzYKg9eUw?si=F0ro35LxqP6s9Bc_',
+    video:
+      'https://youtu.be/ymUzYKg9eUw?si=F0ro35LxqP6s9Bc_',
+    id: 'project7',
+  },
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
-    company: 'ISSM Labelling Solutions (Pvt) Ltd',
-    title: 'Senior Fullstack Developer',
-    start: '2025',
+    company: 'Bridgeframe',
+    title: 'Full Stack Developer',
+    start: 'Sep 2025',
     end: 'Present',
-    link: 'https://issm.ai/',
-    id: 'work3',
+    link: 'https://bridgeframe.co/',
+    id: 'work1',
   },
   {
-    company: 'Ceven Technologies',
-    title: 'Chief Product Officer',
-    start: '2024',
-    end: 'Present',
-    link: 'https://www.ceventech.com/',
+    company: 'ISSM Labelling Solutions (Pvt) Ltd',
+    title: 'Full Stack Developer',
+    start: 'Jan 2025',
+    end: 'Sep 2025',
+    link: 'https://issm.ai/',
     id: 'work2',
   },
   {
-    company: 'Freelance',
+    company: 'Ceven Technologies',
+    title: 'Full Stack Lead',
+    start: 'Jun 2024',
+    end: 'Dec 2024',
+    link: 'https://www.ceventech.com/',
+    id: 'work3',
+  },
+  {
+    company: 'OxyBlue',
     title: 'Full Stack Developer',
-    start: '2017',
-    end: 'Present',
-    link: 'https://github.com/',
+    start: 'Nov 2023',
+    end: 'Jun 2024',
+    link: '',
     id: 'work4',
   },
   {
-    company: 'Urban Codez',
-    title: 'Frontend Developer',
-    start: '2023',
-    end: '2023',
+    company: 'Urban Codes',
+    title: 'Web Development Intern',
+    start: 'Mar 2023',
+    end: 'Aug 2023',
     link: 'https://urbancodez.com/',
     id: 'work5',
   },
@@ -123,31 +143,31 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title: 'Why I Started My Own App Agency',
+    title: 'How I cut message processing from 1.4 minutes to 0.4 seconds',
     description:
-      'My journey from freelancing to building a cross-platform app agency.',
-    link: '/blog/why-i-started-my-own-app-agency',
+      'Optimizing a real-time NLP pipeline for Pakistan\'s largest banks using Redis, Bull queues, and Docker microservices.',
+    link: '/blog/how-i-cut-message-processing-from-minutes-to-milliseconds',
     uid: 'blog-1',
   },
   {
-    title: 'Lessons from Building Scalable Mobile and Web Apps',
+    title: 'Building offline-first apps: lessons from a water delivery fleet',
     description:
-      'Key takeaways from developing apps for real-world businesses.',
-    link: '/blog/lessons-from-building-scalable-mobile-and-web-apps',
+      'Service workers, local caching, conflict resolution, and why it cut fulfillment time from 25 to 15 minutes.',
+    link: '/blog/building-offline-first-apps-lessons-from-oxyblue',
     uid: 'blog-2',
   },
   {
-    title: 'The Future of Cross-Platform Development',
+    title: 'What I learned building an AI eye disease detector with real doctors',
     description:
-      'Exploring Flutter, React Native, and the evolution of mobile development.',
-    link: '/blog/the-future-of-cross-platform-development',
+      'CNN models, Neo4j graph search, RAG pipelines, and validating with ophthalmologists at WATIM Hospital.',
+    link: '/blog/what-i-learned-building-oculacare',
     uid: 'blog-3',
   },
   {
-    title: 'My Experience with AI-Powered App Development',
+    title: 'Building AI agents that actually help: MedLens and what I\'m learning',
     description:
-      'How AI tools are transforming the way I build and optimize applications.',
-    link: '/blog/my-experience-with-ai-powered-app-development',
+      'Real-time first aid AI using Google ADK, Gemini Live, and Vertex AI RAG. What works and what doesn\'t.',
+    link: '/blog/building-ai-agents-that-actually-help',
     uid: 'blog-4',
   },
 ]
@@ -179,23 +199,19 @@ export const TOOLS_AND_TECHNOLOGIES: ToolAndTechnology[] = [
   { name: 'React', icon: 'Atom' },
   { name: 'Next.js', icon: 'Layers' },
   { name: 'Flutter', icon: 'Smartphone' },
-  { name: 'React Native', icon: 'Atom' },
   { name: 'Python', icon: 'Code' },
-  { name: 'Java', icon: 'Code' },
+  { name: 'Node.js', icon: 'Server' },
+  { name: 'Tailwind CSS', icon: 'Wind' },
   { name: 'MongoDB', icon: 'Database' },
   { name: 'MySQL', icon: 'Database' },
   { name: 'Firebase', icon: 'Cloud' },
-  { name: 'Tailwind CSS', icon: 'Wind' },
-  { name: 'Bootstrap', icon: 'Layout' },
-  { name: 'REST APIs', icon: 'Server' },
-  { name: 'Git', icon: 'GitBranch' },
-  { name: 'Figma', icon: 'PenTool' },
-  { name: 'VS Code', icon: 'Code' },
-  { name: 'Android Studio', icon: 'Smartphone' },
+  { name: 'Neo4j', icon: 'Database' },
+  { name: 'Redis', icon: 'Database' },
   { name: 'Docker', icon: 'Package' },
   { name: 'Docker Compose', icon: 'Layers' },
-  { name: 'AWS', icon: 'Cloud' },
+  { name: 'Git', icon: 'GitBranch' },
+  { name: 'GCP', icon: 'Cloud' },
+  { name: 'Nginx', icon: 'Server' },
+  { name: 'Figma', icon: 'PenTool' },
+  { name: 'VS Code', icon: 'Code' },
 ]
-
-
-

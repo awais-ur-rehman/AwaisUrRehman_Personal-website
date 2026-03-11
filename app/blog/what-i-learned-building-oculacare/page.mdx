@@ -1,0 +1,47 @@
+export const metadata = {
+  title: 'What I learned building an AI eye disease detector with real doctors',
+  description:
+    'How I built OculaCare, a Flutter app for eye disease detection using CNN models, Neo4j graph search, and RAG. Validated with ophthalmologists at WATIM Hospital. Won 1st at COMSATS Expo.',
+}
+
+<Cover
+  src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80"
+  alt="Close-up of an eye scan representing AI diagnostics"
+  caption="Where ML models meet actual clinical feedback"
+/>
+
+# What I learned building an AI eye disease detector with real doctors
+
+OculaCare started as my final year project at COMSATS in 2024. It ended up winning 1st place at the Industrial Expo and 2nd at Securiti.ai's national AI Security Challenge. But the interesting story isn't the awards. It's what changed after I started talking to actual doctors.
+
+---
+
+## The original idea vs. reality
+
+I started with a straightforward plan: train a CNN to classify eye diseases from photos, put it in a Flutter app, done. The model worked fine in testing, around 89% accuracy on the dataset I was using.
+
+Then I visited WATIM Hospital and sat with ophthalmologists for a week. They looked at my prototype and asked questions I hadn't considered. "What if the patient has two conditions at once?" "How do you handle ambiguous images?" "Why are you showing a diagnosis without a confidence score?" "Where's the symptom history?"
+
+The CNN alone wasn't enough. Doctors don't diagnose from a single image. They look at symptoms, history, and the image together.
+
+## The system I actually built
+
+I added a symptom analysis pipeline using Neo4j as a knowledge graph. Symptoms map to conditions through weighted relationships that I modeled based on the ophthalmology literature and feedback from the WATIM doctors. When a user reports symptoms, the graph search narrows down probable conditions before the CNN even runs.
+
+Then I added a RAG (Retrieval Augmented Generation) pipeline that pulls from medical literature to generate treatment recommendations. This was important because the doctors told me they'd never trust an app that just says "you have X." They wanted it to explain why and suggest next steps with references.
+
+The app also includes color vision tests, visual acuity tests, and guided eye therapy exercises. These were the doctors' suggestions, not mine. They said patients rarely follow up on eye exercises even when prescribed, but a gamified app might change that.
+
+## What won the competitions
+
+Honestly, I think the judging panels cared most about three things: that I'd validated with real clinicians, that the system combined multiple AI approaches (CNN + graph search + RAG) instead of just one model, and that I had a clear plan for how it would fit into actual clinical workflows rather than replacing them.
+
+**Stack used:** Flutter, Python (FastAPI), TensorFlow (custom CNN), ML Kit, Neo4j, RAG pipeline
+
+---
+
+### Related reading
+
+- [How I cut message processing from 1.4 minutes to 0.4 seconds](/blog/how-i-cut-message-processing-from-minutes-to-milliseconds)
+- [Building offline-first apps: lessons from a water delivery fleet](/blog/building-offline-first-apps-lessons-from-oxyblue)
+- [Building AI agents that actually help: MedLens and what I'm learning](/blog/building-ai-agents-that-actually-help)

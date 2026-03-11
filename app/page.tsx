@@ -46,7 +46,66 @@ type ProjectVideoProps = {
   src: string
 }
 
+function getYouTubeEmbedUrl(url: string): string | null {
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]+)/,
+  ]
+  for (const pattern of patterns) {
+    const match = url.match(pattern)
+    if (match) return `https://www.youtube.com/embed/${match[1]}`
+  }
+  return null
+}
+
 function ProjectVideo({ src }: ProjectVideoProps) {
+  const youtubeUrl = getYouTubeEmbedUrl(src)
+
+  if (youtubeUrl) {
+    return (
+      <MorphingDialog
+        transition={{
+          type: 'spring',
+          bounce: 0,
+          duration: 0.3,
+        }}
+      >
+        <MorphingDialogTrigger>
+          <iframe
+            src={youtubeUrl}
+            title="Project video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="aspect-video w-full cursor-zoom-in rounded-xl"
+          />
+        </MorphingDialogTrigger>
+        <MorphingDialogContainer>
+          <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+            <iframe
+              src={youtubeUrl}
+              title="Project video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
+            />
+          </MorphingDialogContent>
+          <MorphingDialogClose
+            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+            variants={{
+              initial: { opacity: 0 },
+              animate: {
+                opacity: 1,
+                transition: { delay: 0.3, duration: 0.1 },
+              },
+              exit: { opacity: 0, transition: { duration: 0 } },
+            }}
+          >
+            <XIcon className="h-5 w-5 text-zinc-500" />
+          </MorphingDialogClose>
+        </MorphingDialogContainer>
+      </MorphingDialog>
+    )
+  }
+
   return (
     <MorphingDialog
       transition={{
@@ -140,9 +199,10 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Full-stack developer specializing in web and mobile applications,
-            delivering scalable, high-performance solutions with a focus on
-            efficiency and seamless user experience.
+            I build web and mobile apps that work in the real world. Banks,
+            delivery fleets, healthcare providers, they all run on software I
+            shipped. 3 years, 10+ production apps, and a knack for making slow
+            things fast.
           </p>
         </div>
       </motion.section>
@@ -171,6 +231,40 @@ export default function Personal() {
                   {project.description}
                 </p>
               </div>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">Awards & Recognition</h3>
+        <div className="flex flex-col space-y-2">
+          {[
+            { award: '1st Place, COMSATS Industrial Expo', year: '2024' },
+            {
+              award: '2nd Place, AI Security Challenge (Securiti.ai)',
+              year: '2024',
+            },
+            {
+              award: 'Best Presentation Award, AI Challenge',
+              year: '2024',
+            },
+            { award: 'Flutter Kahoot Quiz Winner', year: '2024' },
+            { award: '1st Position, Syberkoza', year: '2023' },
+          ].map((item) => (
+            <div
+              key={item.award}
+              className="flex items-center justify-between rounded-lg bg-zinc-50 px-4 py-3 dark:bg-zinc-900/50"
+            >
+              <span className="text-sm text-zinc-700 dark:text-zinc-300">
+                {item.award}
+              </span>
+              <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                {item.year}
+              </span>
             </div>
           ))}
         </div>

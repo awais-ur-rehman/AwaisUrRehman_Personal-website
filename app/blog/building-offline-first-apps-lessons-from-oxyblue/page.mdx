@@ -1,0 +1,48 @@
+export const metadata = {
+  title: 'Building offline-first apps: lessons from a water delivery fleet',
+  description:
+    'How I built an offline-first Flutter delivery app for OxyBlue. Service workers, local caching, conflict resolution, and why it cut fulfillment time from 25 to 15 minutes.',
+}
+
+<Cover
+  src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1600&q=80"
+  alt="Smartphone showing a delivery app interface"
+  caption="When your users lose signal mid-delivery"
+/>
+
+# Building offline-first apps: lessons from a water delivery fleet
+
+OxyBlue is a water delivery service in Karachi. When I started building their app in late 2023, the biggest constraint wasn't technical complexity. It was that riders regularly lose internet in certain parts of the city. If the app stops working when a rider is mid-route, orders get missed and customers don't get their water.
+
+So the app had to work without internet. Not in a "show a cached page" way, but in a "accept new orders, update delivery status, collect payment confirmations" way. Fully functional, then sync everything when signal comes back.
+
+---
+
+## How the offline mode works
+
+The Flutter app stores pending actions in a local queue (Hive database). When a rider taps "Accept Order" or "Delivered," the action writes locally first. A background sync service checks for connectivity every few seconds. When it finds a connection, it replays the queue against the API in order.
+
+The tricky part is conflict resolution. What if a dispatcher reassigns an order while the rider is offline? When the rider syncs, the server checks timestamps and returns conflicts. The app shows the rider what changed and lets them confirm or discard their local actions.
+
+## What I got wrong initially
+
+My first approach was optimistic: sync everything, assume it works. But I learned quickly that network connections in Karachi are unreliable in a specific way. You might have "connectivity" that times out on every request. So I added a health check ping before attempting a full sync. If the ping fails or takes more than 2 seconds, the app stays in offline mode rather than half-syncing and corrupting state.
+
+I also underestimated how much data riders accumulate offline. A rider doing 30 deliveries without signal generates a lot of status updates, location pings, and payment records. Batching these into a single compressed payload cut sync time from 45 seconds to under 5.
+
+## The numbers
+
+Average fulfillment time dropped from 25 to 15 minutes after launch. The main reason: riders stopped calling dispatch to report statuses verbally. Everything happened in the app, online or offline, and dispatchers saw the synced data within minutes of the rider reconnecting.
+
+## What I'd do differently
+
+I'd add background sync using platform-specific APIs (WorkManager on Android, BGTaskScheduler on iOS) instead of relying on the app being open. And I'd implement delta sync from the start rather than full-state sync, which I had to retrofit later.
+
+**Stack used:** Flutter, Dart, Hive, Node.js, Express, MongoDB
+
+---
+
+### Related reading
+
+- [How I cut message processing from 1.4 minutes to 0.4 seconds](/blog/how-i-cut-message-processing-from-minutes-to-milliseconds)
+- [What I learned building an AI eye disease detector with real doctors](/blog/what-i-learned-building-oculacare)

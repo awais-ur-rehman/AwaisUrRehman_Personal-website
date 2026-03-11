@@ -1,0 +1,50 @@
+export const metadata = {
+  title: 'How I cut message processing from 1.4 minutes to 0.4 seconds',
+  description:
+    'A walkthrough of optimizing a real-time NLP pipeline for UBL and HBL using Redis, Bull queues, and Docker microservices. From 1.4 minutes to 0.4 seconds per message.',
+}
+
+<Cover
+  src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80"
+  alt="Server infrastructure representing backend optimization"
+  caption="The Odin pipeline, before and after"
+/>
+
+# How I cut message processing from 1.4 minutes to 0.4 seconds at Pakistan's largest banks
+
+When I joined ISSM in January 2025, the social listening platform (Odin) had a problem. Customer messages from Facebook, Instagram, and WhatsApp were taking over a minute to appear in the bank agent's inbox. For a customer service tool, that's unusable.
+
+The bottleneck wasn't a single thing. Each message had to go through sentiment analysis, get categorized into a topic bucket, receive a priority score, and then land in the right agent's inbox. All of this was happening synchronously, in one Node.js process, one message at a time.
+
+---
+
+## What was actually slow
+
+The sentiment analysis model (Python) took about 800ms per message. Fair enough, that's model inference. But the Node.js service was waiting for it to finish before starting categorization, which waited for priority scoring, which waited for the database write. Every step blocked the next.
+
+On top of that, Meta's webhook payloads sometimes arrived in bursts. Twenty messages at once from a busy WhatsApp thread would queue up and each one waited for the last to finish.
+
+## What I changed
+
+I broke the monolith into three services: an ingestion service (Node.js), an NLP service (Python/FastAPI), and a routing service (Node.js). They communicate through Redis Pub/Sub rather than HTTP calls.
+
+The ingestion service receives the Meta webhook, does a fast database write (just the raw message), publishes to Redis, and immediately acknowledges. The NLP service picks it up, runs sentiment and categorization in parallel (they don't depend on each other), publishes the enriched result, and the routing service handles priority scoring and inbox placement.
+
+I used Bull queues for the burst problem. Instead of processing messages one at a time, Bull handles concurrency and retry logic. If the NLP service is busy, messages wait in the queue rather than timing out.
+
+Docker Compose made all of this testable locally. Three services, a Redis instance, and MongoDB, all defined in one file. I could simulate a burst of 50 messages on my laptop and see exactly where things stalled.
+
+## The result
+
+Processing time went from around 1.4 minutes to 0.4 seconds per message. That includes the database write, sentiment analysis, categorization, priority scoring, and inbox routing. The bank agents at UBL and HBL now see messages in real time.
+
+The bigger lesson: async-first architecture isn't premature optimization. For any pipeline where steps don't depend on each other, run them in parallel and communicate through queues. It sounds obvious, but the original codebase was written by smart people who just added features one at a time without stepping back to look at the flow.
+
+**Stack used:** Node.js, Python/FastAPI, Redis Pub/Sub, Bull Queue, Docker Compose, MongoDB, Meta Business API
+
+---
+
+### Related reading
+
+- [Building offline-first apps: lessons from a water delivery fleet](/blog/building-offline-first-apps-lessons-from-oxyblue)
+- [What I learned building an AI eye disease detector with real doctors](/blog/what-i-learned-building-oculacare)
