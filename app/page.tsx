@@ -140,9 +140,10 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Full-stack developer specializing in web and mobile applications,
-            delivering scalable, high-performance solutions with a focus on
-            efficiency and seamless user experience.
+            I build web and mobile apps that work in the real world. Banks,
+            delivery fleets, healthcare providers, they all run on software I
+            shipped. 3 years, 10+ production apps, and a knack for making slow
+            things fast.
           </p>
         </div>
       </motion.section>
@@ -171,6 +172,40 @@ export default function Personal() {
                   {project.description}
                 </p>
               </div>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">Awards & Recognition</h3>
+        <div className="flex flex-col space-y-2">
+          {[
+            { award: '1st Place, COMSATS Industrial Expo', year: '2024' },
+            {
+              award: '2nd Place, AI Security Challenge (Securiti.ai)',
+              year: '2024',
+            },
+            {
+              award: 'Best Presentation Award, AI Challenge',
+              year: '2024',
+            },
+            { award: 'Flutter Kahoot Quiz Winner', year: '2024' },
+            { award: '1st Position, Syberkoza', year: '2023' },
+          ].map((item) => (
+            <div
+              key={item.award}
+              className="flex items-center justify-between rounded-lg bg-zinc-50 px-4 py-3 dark:bg-zinc-900/50"
+            >
+              <span className="text-sm text-zinc-700 dark:text-zinc-300">
+                {item.award}
+              </span>
+              <span className="text-sm text-zinc-500 dark:text-zinc-400">
+                {item.year}
+              </span>
             </div>
           ))}
         </div>

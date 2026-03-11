@@ -14,9 +14,9 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Awais Ur Rehman - Full-Stack Developer',
+  title: 'Awais Ur Rehman — Full Stack Developer | React, Node.js, Flutter',
   description:
-    'Awais Ur Rehman is a full-stack developer specializing in scalable web and mobile applications. Building high-performance solutions with React, Next.js, and Flutter.',
+    'Full stack developer with 3 years of experience. Built products for Pakistan\'s largest banks, shipped 10+ production apps. React, Node.js, Flutter, Python.',
 }
 
 const geist = Geist({

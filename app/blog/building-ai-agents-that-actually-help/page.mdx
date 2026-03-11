@@ -1,0 +1,46 @@
+export const metadata = {
+  title: 'Building AI agents that actually help: MedLens and what I\'m learning',
+  description:
+    'Building MedLens, a real-time first aid AI agent using Google ADK, Gemini Live, and Vertex AI RAG. What works, what doesn\'t, and what I\'m figuring out.',
+}
+
+<Cover
+  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80"
+  alt="Medical AI interface concept"
+  caption="When an AI agent needs to be right, not just fast"
+/>
+
+# Building AI agents that actually help: MedLens and what I'm learning
+
+I'm currently building MedLens, a first aid AI that listens to you in real time and tells you what to do. Think of it as a calm, informed voice that walks you through a situation while you're panicking about a cut that won't stop bleeding or a kid who just fell off the playground.
+
+This is an ongoing project, so I'll share what's working, what's not, and what I'm still sorting out.
+
+---
+
+## How it works (so far)
+
+MedLens uses Google's Agent Development Kit (ADK) to coordinate multiple agents. The main one listens through Gemini Live, Google's real-time audio API. You talk to it, it talks back, no typing required. That matters a lot for first aid because your hands are usually busy.
+
+There's also a video agent that can process a camera feed to assess what it's seeing. Is that a burn or a rash? How deep does that cut look? This uses Gemini's multimodal capabilities and it's surprisingly decent at basic visual triage, though I wouldn't trust it for anything beyond surface-level assessment.
+
+Behind both agents, there's a Vertex AI RAG pipeline pulling from first aid guides and emergency protocols. The agents don't make things up. They retrieve and cite from verified sources.
+
+## What's harder than expected
+
+Latency. When someone's panicking, a 3-second delay between their question and the AI's response feels like forever. Gemini Live is fast but not instant, and the RAG retrieval adds time. I'm experimenting with prefetching common scenarios (burns, cuts, falls, choking) so the retrieval step is already done when the user describes their situation.
+
+Context management is the other big challenge. A first aid conversation isn't a single question. It's "my kid fell," then "there's blood on his forehead," then "he says he's dizzy," then "should I drive to the hospital or call an ambulance?" The agent needs to maintain a running picture of the situation and update its advice as new information comes in.
+
+## What OculaCare taught me about medical AI
+
+From building OculaCare, I learned that medical AI has to be transparent about what it doesn't know. MedLens will always say "I'm not a doctor, this is first aid guidance only" and will tell users to call emergency services for anything beyond basic care. The doctors at WATIM drilled that into me: AI in healthcare is useful as a first filter, not a replacement for clinical judgment.
+
+**Stack used:** Google ADK, Google Gemini Live, Vertex AI RAG, Python
+
+---
+
+### Related reading
+
+- [What I learned building an AI eye disease detector with real doctors](/blog/what-i-learned-building-oculacare)
+- [How I cut message processing from 1.4 minutes to 0.4 seconds](/blog/how-i-cut-message-processing-from-minutes-to-milliseconds)

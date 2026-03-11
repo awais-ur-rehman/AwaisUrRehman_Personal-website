@@ -7,9 +7,9 @@ type ChatMsg = { role: 'user' | 'assistant'; content: string; sources?: Source[]
 
 function Suggested({ onPick }: { onPick: (q: string) => void }) {
   const items = [
-    'Who is Awais?',
-    "What are Awais's core skills?",
-    'Show notable projects',
+    'What did Awais build for UBL and HBL?',
+    'Tell me about OculaCare',
+    "What's Awais's tech stack?",
   ]
   return (
     <div className="mt-2 flex flex-wrap gap-2">
