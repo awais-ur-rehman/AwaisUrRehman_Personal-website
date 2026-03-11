@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: fallback, sources })
     }
 
-    const model = 'llama3-70b-8192'
+    const model = 'llama-3.3-70b-versatile'
     const userPrompt = `Question: ${message}\n\nContext:\n${context}`
 
     const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
