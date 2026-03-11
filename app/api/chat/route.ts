@@ -26,8 +26,14 @@ export async function POST(req: Request) {
 
     const groqKey = process.env.GROQ_API_KEY
     if (!groqKey) {
-      // Fallback: return a concise answer using only retrieved context
-      const fallback = `Based on my knowledge base:\n\n${context}\n\nI hope this helps. For more details, ask a more specific question.`
+      // Fallback: build a structured response from retrieved context
+      const parts = top.map((t) => {
+        const content = t.chunk.content.length > 300
+          ? t.chunk.content.slice(0, 300) + '...'
+          : t.chunk.content
+        return `**${t.chunk.title}**\n${content}`
+      })
+      const fallback = parts.join('\n\n')
       const sources = top.map((t, idx) => ({
         id: `#${idx + 1}`,
         title: t.chunk.title,
